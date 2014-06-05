@@ -1,0 +1,4 @@
+#!/bin/bash
+
+apt-get install -y curl vim make 
+apt-get install -y git
