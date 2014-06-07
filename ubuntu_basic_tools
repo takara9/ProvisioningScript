@@ -7,4 +7,4 @@ rm /etc/localtime
 ln -s /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
 
 ufw allow from 10.0.0.0/8
-echo y | ufw enable
+#echo y | ufw enable
