@@ -1,14 +1,19 @@
 #!/bin/bash
 
+# Disable tunnelled clear text passwords
 sed -i.org -e "s/#PasswordAuthentication yes/PasswordAuthentication no/g" /etc/ssh/sshd_config
 service ssh restart
 
+# Change to Japanese locale
 yum -y groupinstall "Japanese Support" 
 sed -i.org -e "s/en_US.UTF-8/ja_JP.UTF-8/g" /etc/sysconfig/i18n
 
+# Change to JST time zone
 rm -f /etc/localtime
 ln -s /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
 
+# Configure Linux Firewall
+# --- CAUTION --- Change to deny access from public address
 iptables -A INPUT -s 10.0.0.0/8 -j ACCEPT
 #iptables -A INPUT -p tcp --dport 80 -j ACCEPT
 iptables -P INPUT DROP
@@ -16,4 +21,5 @@ iptables -P FORWARD DROP
 iptables -P OUTPUT ACCEPT
 service iptables save
 
+# Install basic tools
 yum install -y emacs.x86_64 git-all.noarch
