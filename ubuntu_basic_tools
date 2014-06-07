@@ -1,4 +1,10 @@
 #!/bin/bash
 
-apt-get install -y curl vim make 
-apt-get install -y git
+apt-get install -y curl vim make git emacs23
+aptitude -y install language-pack-ja-base language-pack-ja
+update-locale LANG=ja_JP.UTF-8 LANGUAGE="ja_JP:ja"
+rm /etc/localtime
+ln -s /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
+
+ufw allow from 10.0.0.0/8
+echo y | ufw enable
