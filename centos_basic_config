@@ -15,10 +15,11 @@ ln -s /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
 # Configure Linux Firewall
 # --- CAUTION --- Change to deny access from public address
 iptables -A INPUT -s 10.0.0.0/8 -j ACCEPT
-#iptables -A INPUT -p tcp --dport 80 -j ACCEPT
-iptables -P INPUT DROP
-iptables -P FORWARD DROP
-iptables -P OUTPUT ACCEPT
+iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+iptables -A INPUT -p icmp -j ACCEPT
+iptables -A INPUT -i lo -j ACCEPT
+#iptables -A INPUT -m state --state NEW -m tcp -p tcp --dport 22 -j ACCEPT
+#iptables -A INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT
 service iptables save
 
 # Install basic tools
