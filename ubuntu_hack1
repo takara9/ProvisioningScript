@@ -25,5 +25,5 @@ echo y | ufw enable
 apt-get install -y curl vim make git emacs23
 
 # Install apl
-cd /var/www
+cd /var/www/html
 git clone https://github.com/mishop/243
