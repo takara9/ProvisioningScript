@@ -11,9 +11,19 @@ URLにあります。
 http://www.gg-web.jp/document/ConfigGuide/01002_2/index.html
 
 
-#centos_basic_config#
+##centos_basic_config##
+
+CentOS 5,6,7 用のプロビジョニング・スクリプトで、下記の自動実行をおこないます。
+* パスワードでのログイン禁止、SSH鍵が必須になります。
+* 日本語サポートのインストール
+* 日本語化
+* タイムゾーンをJST (Japan Standard Time)に変更
+* iptables の設定 インターネット側からのアクセス禁止
+* ツールのインストール
 
 
+##ubuntu_basic_config##
 
-#ubuntu_basic_config#
+Ubunte 13.04,14.04 用のプロビジョニング・スクリプトです。自動設定内容は上記と同じです。
+
 
