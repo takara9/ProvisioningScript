@@ -9,7 +9,7 @@ rm -f /etc/localtime
 ln -s /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
 
 # Install basic tools
-apt-get install -y curl vim make git emacs sudo ufw rbenv ruby-build
+apt-get install -y curl vim make git emacs sudo ufw 
 
 # Configure Linux Firewall
 # --- CAUTION --- Deny access from public address
