@@ -16,3 +16,9 @@ apt-get install -y curl vim make git emacs sudo ufw
 ufw allow from 10.0.0.0/8
 echo y | ufw enable
 
+# DNS server for softlayer local domain
+cat <<EOF >> /etc/resolv.conf
+nameserver 67.228.254.4
+nameserver 67.228.255.5
+EOF
+

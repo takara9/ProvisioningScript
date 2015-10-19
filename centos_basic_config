@@ -25,3 +25,9 @@ service iptables save
 
 # Install basic tools
 yum install -y emacs.x86_64 git-all.noarch
+
+# DNS server for softlayer local domain
+cat <<EOF >> /etc/resolv.conf
+nameserver 67.228.254.4
+nameserver 67.228.255.5
+EOF

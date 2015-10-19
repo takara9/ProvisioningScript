@@ -20,7 +20,7 @@ CentOS 5,6,7 用のプロビジョニング・スクリプトで、下記の自�
 * タイムゾーンをJST (Japan Standard Time)に変更
 * iptables の設定 インターネット側からのアクセス禁止
 * ツールのインストール
-
+* SoftLayerのDNSサーバーを追加 (ローカル参照)
 
 ##ubuntu_basic_config##
 

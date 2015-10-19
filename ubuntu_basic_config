@@ -21,3 +21,9 @@ echo y | ufw enable
 
 # Install basic tools
 apt-get install -y curl vim make git emacs23
+
+# DNS server for softlayer local domain
+cat <<EOF >> /etc/resolv.conf
+nameserver 67.228.254.4
+nameserver 67.228.255.5
+EOF
