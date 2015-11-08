@@ -39,12 +39,15 @@ Ubunte 13.04,14.04 用のプロビジョニング・スクリプトです。自�
 * ツール類のパッケージインストール
 * SoftLayerのDNSサーバーを追加 (ローカル参照)
 * CHEF ver 12.5 のインストール
+* クックブックをダウンロード https://github.com/takara9/wordpress01
 * Nginx, FastCGI(fpm)のインストールと設定
 * MySQLサーバーの設定
 * Wordpressのインストール
 
 サーバーが起動した後、ログインした後でも、本スクリプトが実行中の場合があります。
 このため、ps コマンドなどで、スクリプトの終了を確認するなどして、Wordpressの設定を開始します。
+
+CHEFのクックブックは、https://github.com/takara9/wordpress01 にありますので、そちらも参照すると、設定内容を知る事ができます。
 
 
 #### Wordpressの設定
