@@ -35,6 +35,6 @@ bash ${CHEF_WORK}/install.sh -v 12.5 -d ${CHEF_WORK}
 knife cookbook create dummy -o ${CHEF_COOK}
 
 # Download the cookbook & apply
-git -C ${CHEF_COOK} clone https://github.com/takara9/memcache01
-chef-solo -o memcache01
+git -C ${CHEF_COOK} clone https://github.com/takara9/wordpress01
+#chef-solo -o memcache01
 
