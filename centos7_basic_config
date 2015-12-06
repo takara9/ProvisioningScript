@@ -1,0 +1,42 @@
+#!/bin/bash
+
+# Disable tunnelled clear text passwords
+sed -i.org -e "s/PasswordAuthentication yes/PasswordAuthentication no/g" /etc/ssh/sshd_config
+service sshd restart
+
+# Change to Japanese locale
+localectl set-locale LANG=ja_JP.UTF-8 
+
+# Change to JST time zone
+rm -f /etc/localtime
+ln -s /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
+
+# Configure Linux Firewall
+systemctl stop iptables
+systemctl stop ip6tables
+systemctl stop ebtables
+ln -s '/dev/null' '/etc/systemd/system/iptables.service'
+ln -s '/dev/null' '/etc/systemd/system/ip6tables.service'
+ln -s '/dev/null' '/etc/systemd/system/ebtables.service'
+
+systemctl start firewalld
+systemctl enable firewalld
+
+firewall-cmd --permanent --zone=trusted --add-interface=eth0
+#firewall-cmd --permanent --zone=trusted --add-source=10.0.0.0/8
+firewall-cmd --permanent --zone=public --change-interface=eth1
+firewall-cmd --permanent --zone=public --remove-service=ssh
+firewall-cmd --permanent --zone=public --remove-service=dhcpv6-client
+firewall-cmd --permanent --zone=public --add-service=http
+firewall-cmd --permanent --zone=public --add-service=https
+firewall-cmd --reload
+firewall-cmd --get-active-zones > /root/firewall_list.txt
+
+# Install basic tools
+yum install -y emacs git net-tools
+
+# DNS server for softlayer local domain
+cat <<EOF >> /etc/resolv.conf
+nameserver 67.228.254.4
+nameserver 67.228.255.5
+EOF
