@@ -11,16 +11,29 @@ URLにあります。
 https://www.change-makers.jp/post/10294
 
 
-##centos_basic_config##
+##centos_basic_config
 
-CentOS 5,6,7 用のプロビジョニング・スクリプトで、下記の自動実行をおこないます。
+CentOS 5,6 用のプロビジョニング・スクリプトで、下記の自動実行をおこないます。
 * パスワードでのログイン禁止、SSH鍵が必須になります。
 * 日本語サポートのインストール
 * 日本語化
 * タイムゾーンをJST (Japan Standard Time)に変更
-* iptables の設定 インターネット側からのアクセス禁止
+* iptables の設定 publicからのsshログイン禁止
 * ツール類のパッケージインストール
 * SoftLayerのDNSサーバーを追加 (ローカル参照)
+
+
+##centos7_basic_config
+
+CentOS 7 用のプロビジョニング・スクリプトで、下記の自動実行をおこないます。
+* パスワードでのログイン禁止、SSH鍵が必須になります。
+* 日本語ロケール切り替え
+* タイムゾーンをJST (Japan Standard Time)に変更
+* iptables の無効化、firewalld の有効化によりpublicからのsshログイン禁止
+* ツール類のパッケージインストール
+* SoftLayerのDNSサーバーを追加 (ローカル参照)
+
+
 
 ##ubuntu_basic_config##
 

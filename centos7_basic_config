@@ -12,6 +12,7 @@ rm -f /etc/localtime
 ln -s /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
 
 # Configure Linux Firewall
+# stop iptables
 systemctl stop iptables
 systemctl stop ip6tables
 systemctl stop ebtables
@@ -19,16 +20,20 @@ ln -s '/dev/null' '/etc/systemd/system/iptables.service'
 ln -s '/dev/null' '/etc/systemd/system/ip6tables.service'
 ln -s '/dev/null' '/etc/systemd/system/ebtables.service'
 
+# Start firewalld
 systemctl start firewalld
 systemctl enable firewalld
 
+# Set the rule
 firewall-cmd --permanent --zone=trusted --add-interface=eth0
 #firewall-cmd --permanent --zone=trusted --add-source=10.0.0.0/8
 firewall-cmd --permanent --zone=public --change-interface=eth1
 firewall-cmd --permanent --zone=public --remove-service=ssh
 firewall-cmd --permanent --zone=public --remove-service=dhcpv6-client
-firewall-cmd --permanent --zone=public --add-service=http
-firewall-cmd --permanent --zone=public --add-service=https
+#firewall-cmd --permanent --zone=public --add-service=http
+#firewall-cmd --permanent --zone=public --add-service=https
+
+# Make valid the fw rule
 firewall-cmd --reload
 firewall-cmd --get-active-zones > /root/firewall_list.txt
 
