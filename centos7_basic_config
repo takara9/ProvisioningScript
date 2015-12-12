@@ -25,9 +25,11 @@ systemctl start firewalld
 systemctl enable firewalld
 
 # Set the rule
-firewall-cmd --permanent --zone=trusted --add-interface=eth0
-#firewall-cmd --permanent --zone=trusted --add-source=10.0.0.0/8
+#firewall-cmd --permanent --zone=trusted --add-interface=eth0
+#firewall-cmd --permanent --zone=trusted --add-interface=bond0
+firewall-cmd --permanent --zone=trusted --add-source=10.0.0.0/8
 firewall-cmd --permanent --zone=public --change-interface=eth1
+#firewall-cmd --permanent --zone=public --change-interface=bond1
 firewall-cmd --permanent --zone=public --remove-service=ssh
 firewall-cmd --permanent --zone=public --remove-service=dhcpv6-client
 #firewall-cmd --permanent --zone=public --add-service=http
