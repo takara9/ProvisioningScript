@@ -45,3 +45,6 @@ cat <<EOF >> /etc/resolv.conf
 nameserver 67.228.254.4
 nameserver 67.228.255.5
 EOF
+
+# For Chef Ohai plugin
+mkdir -p /etc/chef/ohai/hints && touch ${_}/softlayer.json

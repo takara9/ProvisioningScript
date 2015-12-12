@@ -35,6 +35,9 @@ curl -L https://www.opscode.com/chef/install.sh > ${CHEF_WORK}/install.sh
 bash ${CHEF_WORK}/install.sh -v 12.5 -d ${CHEF_WORK}
 knife cookbook create dummy -o ${CHEF_COOK}
 
+# For Chef Ohai plugin
+mkdir -p /etc/chef/ohai/hints && touch ${_}/softlayer.json
+
 # Download the cookbook & apply
 COOKBOOK=wordpress01
 git -C ${CHEF_COOK} clone https://github.com/takara9/${COOKBOOK}
