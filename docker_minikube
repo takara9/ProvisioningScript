@@ -25,3 +25,6 @@ apt-get install -y curl vim make git emacs23 python
 useradd -m minion
 cp -r /root/.ssh /home/minion
 chown -R minion:minion /home/minion/.ssh
+echo "minion ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/minion
+chmod 440 /etc/sudoers.d/minion
+
