@@ -19,5 +19,5 @@ rm -f /etc/localtime
 ln -s /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
 
 # Install basic tools
-apt-get update && apt-get install -y curl vim make git emacs23 python
+apt-get update && apt-get install -y curl vim make git emacs24-nox python
 
